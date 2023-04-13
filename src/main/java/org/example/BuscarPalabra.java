@@ -14,14 +14,14 @@ public class BuscarPalabra implements Runnable {
 
     private volatile String palabra;
     private final Thread hilo;
-    private final AtomicInteger cant = new AtomicInteger(0); // versión thread safe de Integer. No funciona el autoboxing
-    private final AtomicBoolean modo = new AtomicBoolean(false); // versión del boolean Thread safe
+    private final AtomicInteger cant = new AtomicInteger(0); // versiÃ³n thread safe de Integer. No funciona el autoboxing
+    private final AtomicBoolean modo = new AtomicBoolean(false); // versiÃ³n del boolean Thread safe
 
     public BuscarPalabra(String palabra) {
         this.palabra = palabra;
         hilo = new Thread(this);
         hilo.start();
-        while (hilo.isAlive()) { // Este m�todo nos devuelve true mientras el hilo este operativo
+        while (hilo.isAlive()) { // Este método nos devuelve true mientras el hilo este operativo
             //En este bucle no hacemos nada, solo esperar            
         }
         System.out.println("La palabra " + palabra + " se encuentra contenida en "
@@ -62,8 +62,8 @@ public class BuscarPalabra implements Runnable {
         Main.Log(" ha finalizado!! ");
     }
 
-    // El modificador de m�todo "synchronized" bloquea la entrada a otros hilos cuando un hilo esta ejecutando
-    // el bloque de instrucciones. Afecta a todo el bloque de instrucciones del método
+    // El modificador de método "synchronized" bloquea la entrada a otros hilos cuando un hilo esta ejecutando
+    // el bloque de instrucciones. Afecta a todo el bloque de instrucciones del mÃ©todo
     private synchronized boolean tiene(String archivo) {
 //        boolean existe = false;
         try (FileReader fr = new FileReader("C:\\Prueba\\Textos\\" + archivo);
@@ -85,7 +85,7 @@ public class BuscarPalabra implements Runnable {
 
     private boolean tieneBlock(String archivo) {
         // Un bloque synchronized atrapa un recurso mientras un hilo lo esta utilizando y bloque la entrada
-        // a otros hilos. Solo queda bloqueado el bloque, no afecta al resto de instrucciones del método
+        // a otros hilos. Solo queda bloqueado el bloque, no afecta al resto de instrucciones del mÃ©todo
         synchronized (this) {
             try (FileReader fr = new FileReader("C:\\Prueba\\Textos\\" + archivo);
                     BufferedReader br = new BufferedReader(fr)) {

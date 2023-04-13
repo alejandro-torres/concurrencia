@@ -16,7 +16,7 @@ public class PatoThread extends Thread{
     @Override
     public void run() {
         int numGraznidos = (int) (Math.random()*10+2);
-        for (int i = 0; i < numGraznidos; i++){
+        for (int i = 0; i < 5; i++){
             try {
                 System.out.println("A DORMIR!!" + Thread.currentThread().getName());
                 Thread.sleep(2000);
